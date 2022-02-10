@@ -19,7 +19,6 @@ Contacts::Contacts(QString vNom,QString vPrenom,char vSexe,Adresse* vAdresse)
 
 Contacts::~Contacts()
 {
-    delete this->adresse;
     qDebug() << "Destruction du contact " << this->id <<"\n";
 }
 

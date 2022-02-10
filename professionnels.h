@@ -3,8 +3,7 @@
 
 #include <QString>
 #include "Contacts.h"
-#include <iostream>
-#include <QDebug>
+#include <regex>
 
 
 using namespace std;
