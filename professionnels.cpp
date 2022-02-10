@@ -24,3 +24,14 @@ Professionnels::Professionnels()
 {
 
 }
+
+Professionnels::~Professionnels()
+{
+
+}
+
+void Professionnels::affiche()
+{
+
+}
+

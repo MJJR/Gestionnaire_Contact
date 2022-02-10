@@ -5,6 +5,11 @@ Contacts::Contacts()
 
 }
 
+Contacts::~Contacts()
+{
+
+}
+
 QString Contacts::getAdresse() const
 {
     return adresse;

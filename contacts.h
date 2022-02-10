@@ -9,11 +9,13 @@ class Contacts
 {
 protected:
     Contacts();
+    virtual ~Contacts();
     int id;
     QString nom;
     QString prenom;
     bool sexe;
     QString adresse;
+
 
 public:
     int getId() const;

@@ -13,7 +13,7 @@ private:
 
 public:
     Professionnels();
-
+    ~Professionnels() override;
     void affiche() override;
 
     QString getEmail() const;
