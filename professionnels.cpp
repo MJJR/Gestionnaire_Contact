@@ -20,7 +20,7 @@ void Professionnels::setNomEntreprise(const QString &value)
     nomEntreprise = value;
 }
 
-Professionnels::Professionnels(QString nom, QString prenom, char sexe, Adresse adresse, QString nEntreprise, QString email)
+Professionnels::Professionnels(QString nom, QString prenom, char sexe, Adresse* adresse, QString nEntreprise, QString email)
     :Contacts(nom,prenom,sexe,adresse)
 {
     this->setNomEntreprise(nEntreprise);
@@ -29,6 +29,8 @@ Professionnels::Professionnels(QString nom, QString prenom, char sexe, Adresse a
 
 void Professionnels::affiche()
 {
-    qDebug() << "Nom Entreprise :" << getNomEntreprise() << "Email" << getEmail();
+
+    qDebug() << "Contact professionnel :" << getNom() << " " << getPrenom() << ", Adresse :" << getAdresse()
+             << ", Nom Entreprise:" << getNomEntreprise() << ", email" << getEmail() << endl;
 }
 

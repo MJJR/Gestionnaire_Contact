@@ -17,7 +17,7 @@ private:
     QString email;
 
 public:
-    Professionnels(QString, QString, char, Adresse, QString, QString);
+    Professionnels(QString, QString, char, Adresse*, QString, QString);
     void affiche() override;
 
     QString getEmail() const;
