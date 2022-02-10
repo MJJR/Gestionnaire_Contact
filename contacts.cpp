@@ -1,13 +1,30 @@
 #include "contacts.h"
 
+int Contacts::nbContact = 1;
+
 Contacts::Contacts()
 {
 
 }
 
+Contacts::Contacts(QString vNom,QString vPrenom,char vSexe,QString vAdresse)
+{
+    setNom(vNom);
+    setPrenom(vPrenom);
+    setSexe(vSexe);
+    setAdresse(vAdresse);
+    this->id=nbContact;
+    Contacts::nbContact ++;
+}
+
 Contacts::~Contacts()
 {
 
+}
+
+int Contacts::getId() const
+{
+    return id;
 }
 
 QString Contacts::getAdresse() const
@@ -20,12 +37,12 @@ void Contacts::setAdresse(const QString &value)
     adresse = value;
 }
 
-bool Contacts::getSexe() const
+char Contacts::getSexe() const
 {
     return sexe;
 }
 
-void Contacts::setSexe(bool value)
+void Contacts::setSexe(char value)
 {
     sexe = value;
 }
@@ -50,15 +67,6 @@ void Contacts::setNom(const QString &value)
     nom = value;
 }
 
-int Contacts::getId() const
-{
-    return id;
-}
-
-void Contacts::setId(int value)
-{
-    id = value;
-}
 
 void Contacts::affiche()
 {

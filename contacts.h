@@ -7,29 +7,36 @@
 
 class Contacts
 {
+private:
+    int id;
+
 protected:
     Contacts();
+    Contacts(QString,QString,char,QString);
     virtual ~Contacts();
-    int id;
+
+
     QString nom;
     QString prenom;
-    bool sexe;
+    char sexe;
     QString adresse;
+
+    static int nbContact;
 
 
 public:
     int getId() const;
-    void setId(int value);
     QString getNom() const;
     void setNom(const QString &value);
     QString getPrenom() const;
     void setPrenom(const QString &value);
-    bool getSexe() const;
-    void setSexe(bool value);
+    char getSexe() const;
+    void setSexe(char value);
     QString getAdresse() const;
     void setAdresse(const QString &value);
 
     virtual void affiche();
+
 };
 
 #endif // CONTACTS_H
