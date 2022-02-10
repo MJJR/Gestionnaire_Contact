@@ -28,15 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         prives.cpp \
-        professionnels.cpp \
-        professionnels.cpp
+        professionnels.cpp\
+        contacts.cpp
 
 HEADERS += \
         mainwindow.h \
         prives.h \
         professionnels.h \
-        professionnels.h
-        professionnels.cpp
+        contacts.h
 
 FORMS += \
         mainwindow.ui
