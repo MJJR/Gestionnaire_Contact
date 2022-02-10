@@ -33,7 +33,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableView->setModel(model);
 
 
-
 }
 
 MainWindow::~MainWindow()
