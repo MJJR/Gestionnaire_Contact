@@ -2,6 +2,8 @@
 #define CONTACTS_H
 
 #include <QString>
+#include <QDebug>
+#include "Adresse.h"
 
 
 
@@ -9,19 +11,20 @@ class Contacts
 {
 private:
     int id;
+    static int nbContact;
 
 protected:
     Contacts();
-    Contacts(QString,QString,char,QString);
+    Contacts(QString,QString,char,Adresse*);
     virtual ~Contacts();
 
 
     QString nom;
     QString prenom;
     char sexe;
-    QString adresse;
+    Adresse* adresse;
 
-    static int nbContact;
+
 
 
 public:
@@ -32,8 +35,8 @@ public:
     void setPrenom(const QString &value);
     char getSexe() const;
     void setSexe(char value);
-    QString getAdresse() const;
-    void setAdresse(const QString &value);
+    Adresse* getAdresse() const;
+    void setAdresse( Adresse* &value);
 
     virtual void affiche();
 
