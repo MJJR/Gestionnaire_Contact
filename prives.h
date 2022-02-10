@@ -16,7 +16,7 @@ private:
 
 
 public:
-    Prives(QString,QString,char,Adresse,char,QString);
+    Prives(QString,QString,char,Adresse*,char,QString);
 
     void affiche() override;
 

@@ -27,7 +27,7 @@ void Prives::setDateNaissance(const QString &newDateNaissance)
     dateNaissance = newDateNaissance;
 }
 
-Prives::Prives(QString n, QString p, char s, Adresse a, char sit, QString d)
+Prives::Prives(QString n, QString p, char s, Adresse* a, char sit, QString d)
     :Contacts(n,p,s,a)
 {
     this->setSituation(sit);
@@ -36,5 +36,5 @@ Prives::Prives(QString n, QString p, char s, Adresse a, char sit, QString d)
 
 void Prives::affiche()
 {
-    qDebug() << "Contact privé: " << getNom() <<" "<< getPrenom() << ", situation: " << getSituation() << ", Adresse: " << getAdresse() << ", née le: " << getDateNaissance()<<"\n";
+    qDebug() << "Contact privé: "<< getNom() <<" "<< getPrenom() <<"\nSexe: "<<getSexe() << "\nSituation: " << getSituation() << "\nAdresse: " << adresse->getAdress() << "\nNée le: " << getDateNaissance()<<"\n";
 }
