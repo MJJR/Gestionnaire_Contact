@@ -27,11 +27,16 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        prives.cpp
+        prives.cpp \
+        professionnels.cpp \
+        professionnels.cpp
 
 HEADERS += \
         mainwindow.h \
-        prives.h
+        prives.h \
+        professionnels.h \
+        professionnels.h
+        professionnels.cpp
 
 FORMS += \
         mainwindow.ui
