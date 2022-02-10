@@ -25,17 +25,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        adresse.cpp \
         main.cpp \
         mainwindow.cpp \
         prives.cpp \
         professionnels.cpp\
-        contacts.cpp
+        contacts.cpp \
+        adresse.cpp
 
 HEADERS += \
+        adresse.h \
         mainwindow.h \
         prives.h \
         professionnels.h \
-        contacts.h
+        contacts.h \
+        adresse.h
 
 FORMS += \
         mainwindow.ui
