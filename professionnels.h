@@ -3,6 +3,11 @@
 
 #include <QString>
 #include "Contacts.h"
+#include <iostream>
+#include <QDebug>
+
+
+using namespace std;
 
 class Professionnels : public Contacts
 {
@@ -12,8 +17,7 @@ private:
     QString email;
 
 public:
-    Professionnels();
-    ~Professionnels() override;
+    Professionnels(QString, QString, char, Adresse*, QString, QString);
     void affiche() override;
 
     QString getEmail() const;

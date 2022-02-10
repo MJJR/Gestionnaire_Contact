@@ -2,7 +2,8 @@
 #define PRIVES_H
 
 #include <QString>
-#include "Contacts.h"
+#include "contacts.h"
+#include <QDebug>
 
 
 
@@ -14,11 +15,12 @@ private:
 
 
 public:
-    Prives();
+    Prives(QString,QString,char,Adresse*,char,QString);
+
     void affiche() override;
 
 
-    char getSituation() const;
+    QString getSituation() const;
     void setSituation(char newSituation);
 
     const QString &getDateNaissance() const;

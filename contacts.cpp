@@ -7,19 +7,20 @@ Contacts::Contacts()
 
 }
 
-Contacts::Contacts(QString vNom,QString vPrenom,char vSexe,QString vAdresse)
+Contacts::Contacts(QString vNom,QString vPrenom,char vSexe,Adresse* vAdresse)
 {
     setNom(vNom);
     setPrenom(vPrenom);
     setSexe(vSexe);
     setAdresse(vAdresse);
-    this->id=nbContact;
+    this->id= Contacts::nbContact;
     Contacts::nbContact ++;
 }
 
 Contacts::~Contacts()
 {
-
+    delete this->adresse;
+    qDebug() << "Destruction du contact " << this->id <<"\n";
 }
 
 int Contacts::getId() const
@@ -27,12 +28,12 @@ int Contacts::getId() const
     return id;
 }
 
-QString Contacts::getAdresse() const
+Adresse* Contacts::getAdresse() const
 {
-    return adresse;
+    return this->adresse;
 }
 
-void Contacts::setAdresse(const QString &value)
+void Contacts::setAdresse(Adresse* &value)
 {
     adresse = value;
 }
@@ -70,7 +71,12 @@ void Contacts::setNom(const QString &value)
 
 void Contacts::affiche()
 {
-
+    qDebug() << "Contact :"
+           << "\nIdentifiant : "<< getId()
+           << "\nNom : "<< getNom()
+           << "\nPrenom : "<<getPrenom()
+           << "\nSexe : "<< getSexe()
+           << "\nAdresse : "<<adresse->getAdress();
 }
 
 
