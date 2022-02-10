@@ -1,6 +1,6 @@
 #include "prives.h"
 
-QString Prives::getSituation() const
+/*QString Prives::getSituation() const
 {
     switch (this->situation)
     {
@@ -10,7 +10,7 @@ QString Prives::getSituation() const
         case 'X': return "Autre";
         default : return "Non renseigné";
     }
-}
+}*/
 
 void Prives::setSituation(char newSituation)
 {
@@ -36,5 +36,5 @@ Prives::Prives(QString n, QString p, char s, Adresse* a, char sit, QString d)
 
 void Prives::affiche()
 {
-    qDebug() << "Contact privé: "<< getNom() <<" "<< getPrenom() <<"\nSexe: "<<getSexe() << "\nSituation: " << getSituation() << "\nAdresse: " << adresse->getAdress() << "\nNée le: " << getDateNaissance()<<"\n";
+    qDebug() << "Contact privé: "<< getNom() <<" "<< getPrenom() <<"\nSexe: "<<getSexe() /*<< "\nSituation: " << getSituation()*/ << "\nAdresse: " << adresse->getAdress() << "\nNée le: " << getDateNaissance()<<"\n";
 }
