@@ -2,6 +2,9 @@
 #define ADRESSE_H
 
 #include <QString>
+#include <QRegExp>
+#include <string>
+#include <QDebug>
 
 class Adresse
 {

@@ -37,7 +37,16 @@ int Adresse::getCodePostal() const
 
 void Adresse::setCodePostal(int newCodePostal)
 {
-    codePostal = newCodePostal;
+    //Expression régulière pour vérifier si le code postal français est valide
+    QRegExp testCP("^(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}$");
+    if(testCP.exactMatch(QString::number(newCodePostal))){
+        codePostal = newCodePostal;
+        qDebug() << "\nCode Postal Valide !\n";
+    }
+    else{
+        qDebug() << "\nCode Postal Non Valide !\n";
+    }
+
 }
 
 Adresse::Adresse(QString l, QString v, int c)
