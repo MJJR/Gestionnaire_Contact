@@ -9,9 +9,8 @@ void Professionnels::setEmail(const QString &value)
 {
 
     //Expression régulière pour vérifier si le code postal français est valide
-    QRegExp testCP("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
-    QString codePostalString (value);
-    if(testCP.exactMatch(codePostalString)){
+    QRegularExpression testCP("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
+    if(testCP.match(value).hasMatch()){
         email = value;
     }
     else{

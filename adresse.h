@@ -2,7 +2,7 @@
 #define ADRESSE_H
 
 #include <QString>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <string>
 #include <QDebug>
 

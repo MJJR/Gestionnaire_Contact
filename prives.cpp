@@ -1,5 +1,6 @@
 #include "prives.h"
 
+
 /*QString Prives::getSituation() const
 {
     switch (this->situation)
@@ -24,7 +25,14 @@ const QString &Prives::getDateNaissance() const
 
 void Prives::setDateNaissance(const QString &newDateNaissance)
 {
-    dateNaissance = newDateNaissance;
+       QRegularExpression testCP("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$");
+       if(testCP.match(newDateNaissance).hasMatch()){
+           dateNaissance = newDateNaissance;
+       }
+       else{
+        qDebug() << "Invalide date naissance" ;
+       }
+
 }
 
 Prives::Prives(QString n, QString p, char s, Adresse* a, char sit, QString d)

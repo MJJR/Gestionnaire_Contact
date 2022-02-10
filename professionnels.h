@@ -2,8 +2,8 @@
 #define PROFESSIONNELS_H
 
 #include <QString>
-#include "Contacts.h"
-#include <regex>
+#include "contacts.h"
+#include <QRegularExpression>
 
 
 using namespace std;

@@ -7,6 +7,7 @@
 
 
 
+
 class Prives : public Contacts
 {
 private:
