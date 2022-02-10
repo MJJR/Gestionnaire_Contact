@@ -25,7 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        adresse.cpp \
         main.cpp \
         mainwindow.cpp \
         prives.cpp \
@@ -34,7 +33,6 @@ SOURCES += \
         adresse.cpp
 
 HEADERS += \
-        adresse.h \
         mainwindow.h \
         prives.h \
         professionnels.h \

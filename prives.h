@@ -2,8 +2,7 @@
 #define PRIVES_H
 
 #include <QString>
-#include "Contacts.h"
-#include "Adresse.h"
+#include "contacts.h"
 #include <QDebug>
 
 

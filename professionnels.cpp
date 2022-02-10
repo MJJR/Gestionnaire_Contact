@@ -30,7 +30,7 @@ Professionnels::Professionnels(QString nom, QString prenom, char sexe, Adresse* 
 void Professionnels::affiche()
 {
 
-    qDebug() << "Contact professionnel :" << getNom() << " " << getPrenom() << ", Adresse :" << getAdresse()
-             << ", Nom Entreprise:" << getNomEntreprise() << ", email" << getEmail() << endl;
+    qDebug() << "Contact professionnel :" << getNom() << " " << getPrenom() << "\nAdresse : " << adresse->getAdress() <<"\nSexe: " << getSexe()
+             << "\nNom Entreprise: " << getNomEntreprise() << "\nEmail: " << getEmail() << "\n";
 }
 

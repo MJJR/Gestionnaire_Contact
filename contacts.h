@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <QDebug>
-#include "Adresse.h"
+#include "adresse.h"
 
 
 
@@ -14,20 +14,18 @@ private:
     static int nbContact;
 
 protected:
-    Contacts();
-    Contacts(QString,QString,char,Adresse*);
-    virtual ~Contacts();
-
-
-    QString nom;
+QString nom;
     QString prenom;
     char sexe;
     Adresse* adresse;
 
 
-
-
 public:
+    Contacts();
+    Contacts(QString,QString,char,Adresse*);
+    virtual ~Contacts();
+
+
     int getId() const;
     QString getNom() const;
     void setNom(const QString &value);
