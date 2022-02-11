@@ -16,10 +16,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>70</x>
      <y>20</y>
      <width>491</width>
-     <height>461</height>
+     <height>354</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -54,7 +54,11 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="txtNom"/>
+     <widget class="QLineEdit" name="txtNom">
+      <property name="text">
+       <string>4545</string>
+      </property>
+     </widget>
     </item>
     <item row="4" column="0">
      <widget class="QLabel" name="lblNom_2">
@@ -66,7 +70,7 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="txtPrenom">
       <property name="text">
-       <string/>
+       <string>Paillard</string>
       </property>
      </widget>
     </item>
@@ -101,7 +105,7 @@
     <item row="8" column="1">
      <widget class="QLineEdit" name="txtAdresse">
       <property name="text">
-       <string/>
+       <string>15 test</string>
       </property>
      </widget>
     </item>
@@ -129,7 +133,7 @@
     <item row="12" column="1">
      <widget class="QLineEdit" name="txtCodePostal">
       <property name="text">
-       <string/>
+       <string>35000</string>
       </property>
      </widget>
     </item>
@@ -143,7 +147,7 @@
     <item row="14" column="1">
      <widget class="QLineEdit" name="txtVille">
       <property name="text">
-       <string/>
+       <string>Rennes</string>
       </property>
      </widget>
     </item>
@@ -237,40 +241,33 @@
     <string>test</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnAjouter">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>360</y>
+     <width>221</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ajouter</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnAnnuler">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>360</y>
+     <width>221</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Annuler</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>AjoutContact</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>760</x>
-     <y>444</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>AjoutContact</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>786</x>
-     <y>450</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

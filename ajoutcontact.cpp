@@ -25,15 +25,15 @@ AjoutContact::~AjoutContact()
 void AjoutContact::on_rdoProfessionnel_clicked()
 {
     ui->grpPro->show();
-    ui->lblDate->show();
-    ui->dateNaissance->show();
+    ui->lblDate->hide();
+    ui->dateNaissance->hide();
 }
 
 void AjoutContact::on_rdoPrive_clicked()
 {
     ui->grpPro->hide();
-    ui->lblDate->hide();
-    ui->dateNaissance->hide();
+    ui->lblDate->show();
+    ui->dateNaissance->show();
 }
 
 void AjoutContact::onFormulaireError(int e)
@@ -80,46 +80,75 @@ void AjoutContact::on_testBtn_clicked()
     if(ui->rdoPrive->isChecked() == true)
     {
         Adresse a1("125, rue","Toulouse",36000); //TODO Recup donnés form && créer adresse
-        if (a1.getErrorA() == VALIDE)
-        {
-            Contacts* p1= new Prives("Jean","Phillipe",'F',&a1,"13/09/1955"); //TODO Recup donnés form && créer Contact
-            if (p1->getError() != VALIDE)
-            {
-                emit(erreur(p1->getError()));
-            }
-            else
-            {
-                //TODO SQL
-            }
-            delete p1;
-        }
-        else
-        {
-             emit(erreur(a1.getErrorA()));
-        }
 
     }
     else
     {
-        Adresse a1("125, rue","Toulouse",36000); //TODO Recup donnés form && créer adresse
+
+    }
+
+}
+
+
+
+void AjoutContact::on_btnAjouter_clicked()
+{
+    QString nom = ui->txtNom->text();
+    QString prenom = ui->txtPrenom->text();
+    QString sexe = ui->cboSexe->currentText();
+    QString libelle = ui->txtAdresse->text();
+    QString complement = ui->txtComplement->text();
+    int codePostal = ui->txtCodePostal->text().toInt();
+    QString ville = ui->txtVille->text();
+
+
+    if(ui->rdoPrive->isChecked() == true)
+    {
+        QString dateNaissance = ui->dateNaissance->date().toString("dd-MM-yyyy");
+        Adresse a1(libelle,complement,ville,codePostal);
         if (a1.getErrorA() == VALIDE)
         {
-            Contacts* p1= new Professionnels("Jean","Phillipe",'F',&a1,"Abylsen","jean@jean.com"); //TODO Recup donnés form && créer Contact
-            if (p1->getError() != VALIDE)
+            Contacts* c1 = new Prives(nom,prenom,'M',&a1,dateNaissance); //TODO Recup donnés form && créer Contact
+            if (c1->getError() != VALIDE)
             {
-                emit(erreur(p1->getError()));
+                emit(erreur(c1->getError()));
             }
             else
             {
                 //TODO SQL
             }
-            delete p1;
+            delete c1;
         }
         else
         {
              emit(erreur(a1.getErrorA()));
         }
+
+    }else {
+        QString nomEntreprise = ui->txtNomEntreprise->text();
+        QString email = ui->txtEmail->text();
+
+        Adresse a1(libelle,complement,ville,codePostal); //TODO Recup donnés form && créer adresse
+        if (a1.getErrorA() == VALIDE)
+        {
+            Contacts* c1 = new Professionnels(nom,prenom,'M',&a1,nomEntreprise, email); //TODO Recup donnés form && créer Contact
+            c1->affiche();
+            if (c1->getError() != VALIDE)
+            {
+                emit(erreur(c1->getError()));
+            }
+            else
+            {
+                //TODO SQL
+            }
+            delete c1;
+        }
+        else
+        {
+             emit(erreur(a1.getErrorA()));
+        }
+
+
     }
-
+    //this->accept();
 }
-
