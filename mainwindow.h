@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QSqlTableModel>
 #include <QSqlQuery>
-#include <QDebug>
+
 
 namespace Ui {
 class MainWindow;
@@ -35,9 +35,7 @@ private slots:
 
     void on_ajouterContact_triggered();
 
-    //TEST DES REQUETES
-    //void on_pushButton_clicked();
-    //void on_pushButton_2_clicked();
+    void on_choiceContact();
 
 protected:
     void closeEvent(QCloseEvent *);

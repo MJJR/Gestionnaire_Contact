@@ -5,7 +5,6 @@
 #include "contacts.h"
 #include <QRegularExpression>
 
-
 using namespace std;
 
 class Professionnels : public Contacts

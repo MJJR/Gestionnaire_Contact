@@ -5,9 +5,6 @@
 #include "contacts.h"
 #include <QDebug>
 
-
-
-
 class Prives : public Contacts
 {
 private:

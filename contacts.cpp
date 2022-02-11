@@ -68,7 +68,7 @@ void Contacts::setPrenom(const QString &value)
         prenom = value;
     }
     else{
-     qDebug() << "Invalide Prenom" ;
+     error=PRENOM;
     }
 
 }
@@ -86,9 +86,14 @@ void Contacts::setNom(const QString &value)
         nom = value;
     }
     else{
-     qDebug() << "Invalide Nom" ;
+     error=NOM;
     }
 
+}
+
+int Contacts::getError() const
+{
+    return error;
 }
 
 

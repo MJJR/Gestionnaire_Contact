@@ -173,27 +173,6 @@ void MainWindow::on_ajouterContact_triggered()
     ajoutContact.exec();
 }
 
-/*
- * //TEST DES REQUETES
-void MainWindow::on_pushButton_clicked()
-{
-
-    if(insertPro(43,"LOL","Juju", 'F',"-1, rue negatif","c'est negatif, quoi", "kekpar", 1001, "CSerieuOuais", "darkJujudu35@gogol.fr"))
-        qDebug()<<"Insertion Pro est passe";
-    else
-        qDebug()<<"Insertion Pro invalide";
-
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    if(insertPrive(44,"OUI","Jaja", 'M',"-2, rue negatif","c'est negatif, comme mon QI", "kekpar", 1001, "02/02/2002"))
-        qDebug()<<"Insertion Prive est passe";
-    else
-        qDebug()<<"Insertion Prive invalide";
-}
-*/
-
 bool MainWindow::insertPro(int id , QString nom , QString prenom ,
                            char sexe , QString libelle , QString complement ,
                            QString ville , int codePostal , QString nomEntreprise ,
@@ -270,3 +249,19 @@ bool MainWindow::insertPrive(int id, QString nom, QString prenom,
 }
 
 
+
+void MainWindow::on_choiceContact()
+{
+    qDebug() << "Police !!!";
+
+        //sender() : élément déclencheur
+
+        qDebug() << "sender() : élément déclencheur " <<  sender()->objectName();
+
+        QAbstractButton *rb = dynamic_cast<QAbstractButton*>(sender());
+
+        if(rb != nullptr)
+        {
+            qDebug() << rb->text();
+        }
+}
