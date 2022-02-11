@@ -2,10 +2,8 @@
 #define PROFESSIONNELS_H
 
 #include <QString>
-#include "Contacts.h"
-#include <iostream>
-#include <QDebug>
-
+#include "contacts.h"
+#include <QRegularExpression>
 
 using namespace std;
 

@@ -6,7 +6,6 @@
 #include "adresse.h"
 
 
-
 class Contacts
 {
 private:
@@ -14,10 +13,11 @@ private:
     static int nbContact;
 
 protected:
-QString nom;
+    QString nom;
     QString prenom;
     char sexe;
     Adresse* adresse;
+    int error=VALIDE;
 
 
 public:
@@ -35,6 +35,7 @@ public:
     void setSexe(char value);
     Adresse* getAdresse() const;
     void setAdresse( Adresse* &value);
+    int getError() const;
 
     virtual void affiche();
 

@@ -19,7 +19,6 @@ Contacts::Contacts(QString vNom,QString vPrenom,char vSexe,Adresse* vAdresse)
 
 Contacts::~Contacts()
 {
-    delete this->adresse;
     qDebug() << "Destruction du contact " << this->id <<"\n";
 }
 
@@ -45,7 +44,15 @@ char Contacts::getSexe() const
 
 void Contacts::setSexe(char value)
 {
-    sexe = value;
+    //TODO REGEX
+    QRegularExpression testSX("[M|F]{1}");
+    if(testSX.match(QString(value)).hasMatch()){
+        sexe = value;
+    }
+    else{
+     qDebug() << "Invalide Sexe" ;
+    }
+
 }
 
 QString Contacts::getPrenom() const
@@ -55,7 +62,15 @@ QString Contacts::getPrenom() const
 
 void Contacts::setPrenom(const QString &value)
 {
-    prenom = value;
+    //TODO REGEX
+    QRegularExpression testPr("^[A-Z]{1}[a-z]*");
+    if(testPr.match(value).hasMatch()){
+        prenom = value;
+    }
+    else{
+     error=PRENOM;
+    }
+
 }
 
 QString Contacts::getNom() const
@@ -65,7 +80,20 @@ QString Contacts::getNom() const
 
 void Contacts::setNom(const QString &value)
 {
-    nom = value;
+    //TODO REGEX
+    QRegularExpression testNm("[A-Z]+|[a-z]+");
+    if(testNm.match(value).hasMatch()){
+        nom = value.toUpper();
+    }
+    else{
+     error=NOM;
+    }
+
+}
+
+int Contacts::getError() const
+{
+    return error;
 }
 
 

@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        ajoutcontact.cpp \
         main.cpp \
         mainwindow.cpp \
         prives.cpp \
@@ -33,6 +35,7 @@ SOURCES += \
         adresse.cpp
 
 HEADERS += \
+        ajoutcontact.h \
         mainwindow.h \
         prives.h \
         professionnels.h \
@@ -40,6 +43,7 @@ HEADERS += \
         adresse.h
 
 FORMS += \
+        ajoutcontact.ui \
         mainwindow.ui
 
 # Default rules for deployment.

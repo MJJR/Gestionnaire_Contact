@@ -2,6 +2,12 @@
 #define ADRESSE_H
 
 #include <QString>
+#include <QRegularExpression>
+#include <string>
+#include <QDebug>
+
+
+enum errors {VALIDE,MAIL,LIBELLE,VILLE,PRENOM,NOM,DATE,ENTR,SQL,POST};
 
 class Adresse
 {
@@ -10,7 +16,7 @@ private:
     QString complement;
     QString ville;
     int codePostal;
-
+    int errorA = VALIDE;
 
 public:
     Adresse(QString,QString,int);
@@ -25,6 +31,7 @@ public:
     void setVille(const QString &newVille);
     int getCodePostal() const;
     void setCodePostal(int newCodePostal);
+    int getErrorA() const;
 };
 
 #endif // ADRESSE_H
