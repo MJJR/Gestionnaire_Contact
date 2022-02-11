@@ -1,8 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ajoutcontact.h"
 
+#include <QMessageBox>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
+#include <QCloseEvent>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -103,8 +107,32 @@ void MainWindow::on_radioAll_pressed()
 }
 
 
+void MainWindow::on_actionFermer_triggered()
+{
+    this->close();
+}
 
+void MainWindow::closeEvent(QCloseEvent * eventClose)
+{
+    QMessageBox msgBox(this);
+    msgBox.setText("Voulez vous Quitter ?");
+    msgBox.setInformativeText("Quitter ?");
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Cancel);
 
+    int reponse = msgBox.exec();
+
+    switch(reponse)
+    {
+        case QMessageBox::Yes:
+            eventClose->accept();
+            break;
+        default:
+            eventClose->ignore();
+            break;
+    }
+}
 void MainWindow::on_rechercheBtn_clicked()
 {
     for (int i=0; i<row; i++)
@@ -137,3 +165,10 @@ void MainWindow::on_rechercheCancl_clicked()
     ui->tableView->showColumn(4);
 }
 
+
+void MainWindow::on_ajouterContact_triggered()
+{
+    AjoutContact ajoutContact;
+
+    ajoutContact.exec();
+}
