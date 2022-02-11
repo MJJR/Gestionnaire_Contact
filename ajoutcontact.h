@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include <QDebug>
+#include "prives.h"
+#include "adresse.h"
+#include "professionnels.h"
 
 #include "professionnels.h"
 #include "prives.h"
@@ -25,6 +28,8 @@ private slots:
     void on_rdoProfessionnel_clicked();
 
     void on_rdoPrive_clicked();
+
+    void on_btnAjouter_clicked();
 
 private:
     Ui::AjoutContact *ui;
