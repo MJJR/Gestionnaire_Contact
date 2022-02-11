@@ -13,7 +13,7 @@ void Prives::setDateNaissance(const QString &newDateNaissance)
            dateNaissance = newDateNaissance;
        }
        else{
-        qDebug() << "Invalide date naissance" ;
+        error=DATE;
        }
 
 }
@@ -28,3 +28,6 @@ void Prives::affiche()
 {
     qDebug() << "Contact privé: "<< getNom() <<" "<< getPrenom() <<"\nSexe: "<<getSexe() /*<< "\nSituation: " << getSituation()*/ << "\nAdresse: " << adresse->getAdress() << "\nNée le: " << getDateNaissance()<<"\n";
 }
+
+
+

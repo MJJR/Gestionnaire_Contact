@@ -13,7 +13,7 @@ void Adresse::setLibelle(const QString &newLibelle)
         libelle = newLibelle;
     }
     else{
-     qDebug() << "Invalide Libelle" ;
+     errorA=LIBELLE;
     }
 }
 
@@ -42,7 +42,7 @@ void Adresse::setVille(const QString &newVille)
         ville = newVille;
     }
     else{
-     qDebug() << "Invalide Ville" ;
+     errorA=VILLE;
     }
 
 }
@@ -64,6 +64,11 @@ void Adresse::setCodePostal(int newCodePostal)
         qDebug() << "\nCode Postal Non Valide !\n";
     }
 
+}
+
+int Adresse::getErrorA() const
+{
+    return errorA;
 }
 
 Adresse::Adresse(QString l, QString v, int c)

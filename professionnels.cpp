@@ -14,7 +14,7 @@ void Professionnels::setEmail(const QString &value)
         email = value;
     }
     else{
-        email = "default.email@gmail.com";
+        error=MAIL;
     }
 }
 
@@ -27,8 +27,8 @@ void Professionnels::setNomEntreprise(const QString &value)
 {
     if(value.size() > 50)
     {
-        //Implementer la gestion de l'erreur
-        qDebug() << "Error Nom de l'entreprise trop long !!!";
+      error=ENTR;
+
     }else {
         nomEntreprise = value.toUpper();
     }

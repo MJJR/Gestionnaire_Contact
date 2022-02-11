@@ -6,6 +6,9 @@
 #include <string>
 #include <QDebug>
 
+
+enum errors {VALIDE,MAIL,LIBELLE,VILLE,PRENOM,NOM,DATE,ENTR};
+
 class Adresse
 {
 private:
@@ -13,7 +16,7 @@ private:
     QString complement;
     QString ville;
     int codePostal;
-
+    int errorA = VALIDE;
 
 public:
     Adresse(QString,QString,int);
@@ -28,6 +31,7 @@ public:
     void setVille(const QString &newVille);
     int getCodePostal() const;
     void setCodePostal(int newCodePostal);
+    int getErrorA() const;
 };
 
 #endif // ADRESSE_H

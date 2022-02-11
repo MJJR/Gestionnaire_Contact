@@ -4,6 +4,10 @@
 #include <QDialog>
 #include <QDebug>
 
+#include "professionnels.h"
+#include "prives.h"
+#include "adresse.h"
+
 namespace Ui {
 class AjoutContact;
 }
@@ -24,6 +28,14 @@ private slots:
 
 private:
     Ui::AjoutContact *ui;
+
+private slots:
+    void onFormulaireError(int);
+
+    void on_testBtn_clicked();
+
+signals:
+    void erreur(int);
 };
 
 #endif // AJOUTCONTACT_H
