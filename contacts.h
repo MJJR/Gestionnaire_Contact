@@ -39,7 +39,6 @@ public:
 
     virtual void affiche();
 
-
 };
 
 #endif // CONTACTS_H

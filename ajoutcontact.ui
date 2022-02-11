@@ -13,166 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>20</y>
-     <width>491</width>
-     <height>354</height>
-    </rect>
-   </property>
-   <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0">
-     <widget class="QRadioButton" name="rdoPrive">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="text">
-       <string>Prive</string>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QRadioButton" name="rdoProfessionnel">
-      <property name="text">
-       <string>Professionnels</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="lblNom">
-      <property name="text">
-       <string>Nom :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="txtNom">
-      <property name="text">
-       <string>4545</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="lblNom_2">
-      <property name="text">
-       <string>Prénom :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLineEdit" name="txtPrenom">
-      <property name="text">
-       <string>Paillard</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0">
-     <widget class="QLabel" name="lblSexe">
-      <property name="text">
-       <string>Sexe :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="1">
-     <widget class="QComboBox" name="cboSexe">
-      <item>
-       <property name="text">
-        <string>Mr</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Mme</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="8" column="0">
-     <widget class="QLabel" name="lblAdresse">
-      <property name="text">
-       <string>Adresse :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="1">
-     <widget class="QLineEdit" name="txtAdresse">
-      <property name="text">
-       <string>15 test</string>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="0">
-     <widget class="QLabel" name="lblComplement">
-      <property name="text">
-       <string>Complément:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="1">
-     <widget class="QLineEdit" name="txtComplement">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="12" column="0">
-     <widget class="QLabel" name="lblCodePostal">
-      <property name="text">
-       <string>CodePostal :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="12" column="1">
-     <widget class="QLineEdit" name="txtCodePostal">
-      <property name="text">
-       <string>35000</string>
-      </property>
-     </widget>
-    </item>
-    <item row="14" column="0">
-     <widget class="QLabel" name="lblVille">
-      <property name="text">
-       <string>Ville :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="14" column="1">
-     <widget class="QLineEdit" name="txtVille">
-      <property name="text">
-       <string>Rennes</string>
-      </property>
-     </widget>
-    </item>
-    <item row="16" column="0">
-     <widget class="QLabel" name="lblDate">
-      <property name="text">
-       <string>Date de naissance :</string>
-      </property>
-     </widget>
-    </item>
-    <item row="16" column="1">
-     <widget class="QDateEdit" name="dateNaissance"/>
-    </item>
-    <item row="18" column="1">
-     <widget class="QDialogButtonBox" name="buttonBox">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="standardButtons">
-       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QGroupBox" name="grpPro">
    <property name="geometry">
     <rect>
@@ -228,25 +68,12 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QPushButton" name="testBtn">
-   <property name="geometry">
-    <rect>
-     <x>680</x>
-     <y>320</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>test</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnAjouter">
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>360</y>
-     <width>221</width>
+     <y>310</y>
+     <width>211</width>
      <height>21</height>
     </rect>
    </property>
@@ -258,14 +85,176 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>360</y>
-     <width>221</width>
+     <y>310</y>
+     <width>211</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
     <string>Annuler</string>
    </property>
+  </widget>
+  <widget class="QRadioButton" name="rdoProfessionnel">
+   <property name="geometry">
+    <rect>
+     <x>172</x>
+     <y>21</y>
+     <width>94</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Professionnels</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="rdoPrive">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>71</x>
+     <y>21</y>
+     <width>49</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Prive</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>69</x>
+     <y>52</y>
+     <width>461</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lblNom">
+      <property name="text">
+       <string>Nom :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="txtNom">
+      <property name="text">
+       <string>4545</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="lblNom_2">
+      <property name="text">
+       <string>Prénom :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="txtPrenom">
+      <property name="text">
+       <string>Paillard</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="lblSexe">
+      <property name="text">
+       <string>Sexe</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="cboSexe">
+      <item>
+       <property name="text">
+        <string>Mr</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Mme</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="lblAdresse">
+      <property name="text">
+       <string>Adresse :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="txtAdresse">
+      <property name="text">
+       <string>15 test</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="lblComplement">
+      <property name="text">
+       <string>Complément:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="txtComplement">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="lblCodePostal">
+      <property name="text">
+       <string>CodePostal :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="txtCodePostal">
+      <property name="text">
+       <string>35000</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="lblVille">
+      <property name="text">
+       <string>Ville :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="txtVille">
+      <property name="text">
+       <string>Rennes</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="lblDate">
+      <property name="text">
+       <string>Date de naissance :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QDateEdit" name="dateNaissance"/>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
