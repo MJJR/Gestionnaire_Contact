@@ -1,31 +1,6 @@
 #include "prives.h"
 
 
-/*QString Prives::getSituation() const
-{
-    switch (this->situation)
-    {
-        case 'C': return "Célibataire";
-        case 'M': return "Marié(e)";
-        case 'D': return "Divorcé(e)";
-        case 'X': return "Autre";
-        default : return "Non renseigné";
-    }
-}*/
-
-void Prives::setSituation(char newSituation)
-{
-
-    QRegularExpression testSit("[A-Z]{1}");
-    if(testSit.match( QString(newSituation) ).hasMatch()){
-        situation = newSituation;
-    }
-    else{
-     qDebug() << "Invalide situation" ;
-    }
-
-}
-
 const QString &Prives::getDateNaissance() const
 {
     return dateNaissance;
@@ -43,10 +18,9 @@ void Prives::setDateNaissance(const QString &newDateNaissance)
 
 }
 
-Prives::Prives(QString n, QString p, char s, Adresse* a, char sit, QString d)
+Prives::Prives(QString n, QString p, char s, Adresse* a, QString d)
     :Contacts(n,p,s,a)
 {
-    this->setSituation(sit);
     this->setDateNaissance(d);
 }
 
