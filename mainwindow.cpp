@@ -104,3 +104,36 @@ void MainWindow::on_radioAll_pressed()
 
 
 
+
+void MainWindow::on_rechercheBtn_clicked()
+{
+    for (int i=0; i<row; i++)
+    {
+        ui->tableView->showRow(i);
+    }
+    ui->tableView->showColumn(10);
+    ui->tableView->showColumn(9);
+    ui->tableView->showColumn(4);
+    auto index = model->index(0,1);
+    for (int i=0; i<row; i++)
+    {
+        index = model->index(i,1);
+        if (index.data() != ui->rechercheEdit->text().toUpper())
+        {
+            ui->tableView->hideRow(i);
+        }
+    }
+}
+
+
+void MainWindow::on_rechercheCancl_clicked()
+{
+    for (int i=0; i<row; i++)
+    {
+        ui->tableView->showRow(i);
+    }
+    ui->tableView->showColumn(10);
+    ui->tableView->showColumn(9);
+    ui->tableView->showColumn(4);
+}
+

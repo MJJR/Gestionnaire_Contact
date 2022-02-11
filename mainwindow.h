@@ -23,6 +23,9 @@ private slots:
 
     void on_radioAll_pressed();
 
+    void on_rechercheBtn_clicked();
+
+    void on_rechercheCancl_clicked();
 
 private:
     Ui::MainWindow *ui;
