@@ -71,6 +71,14 @@ void AjoutContact::onFormulaireError(int e)
         case ENTR:
         msgBox.setText("Nom entreprise invalide");
         break;
+
+        case SQL:
+        msgBox.setText("Erreur SQL");
+        break;
+
+        case POST:
+        msgBox.setText("Erreur code postal");
+        break;
     }
     msgBox.exec();
 }
@@ -99,21 +107,21 @@ void AjoutContact::on_btnAjouter_clicked()
         Adresse a1(libelle,complement,ville,codePostal);
         if (a1.getErrorA() == VALIDE)
         {
-            Contacts* c1 = new Prives(nom,prenom,sexe,&a1,dateNaissance); //TODO Recup donnés form && créer Contact
-            c1->affiche();
+            Contacts* c1 = new Prives(nom,prenom,sexe,&a1,dateNaissance);
             if (c1->getError() != VALIDE)
             {
                 emit(erreur(c1->getError()));
             }
             else
             {
-                insertPrive( c1->getNom(),c1->getPrenom(),
+                bool ok =insertPrive( c1->getNom(),c1->getPrenom(),
                              c1->getSexe(),c1->getAdresse()->getLibelle(),
                              c1->getAdresse()->getComplement(),
                              c1->getAdresse()->getVille(),
                              c1->getAdresse()->getCodePostal(),
                              dateNaissance);
-
+                if (ok) this->accept();
+                else  emit(erreur(SQL));
             }
             delete c1;
         }
@@ -126,24 +134,24 @@ void AjoutContact::on_btnAjouter_clicked()
         QString nomEntreprise = ui->txtNomEntreprise->text();
         QString email = ui->txtEmail->text();
 
-        Adresse a1(libelle,complement,ville,codePostal); //TODO Recup donnés form && créer adresse
+        Adresse a1(libelle,complement,ville,codePostal);
         if (a1.getErrorA() == VALIDE)
         {
-            Contacts* c1 = new Professionnels(nom,prenom,sexe,&a1,nomEntreprise, email); //TODO Recup donnés form && créer Contact
-            c1->affiche();
+            Contacts* c1 = new Professionnels(nom,prenom,sexe,&a1,nomEntreprise, email);
             if (c1->getError() != VALIDE)
             {
                 emit(erreur(c1->getError()));
             }
             else
             {
-                insertPro( c1->getNom(),c1->getPrenom(),
+               bool ok = insertPro( c1->getNom(),c1->getPrenom(),
                              c1->getSexe(),c1->getAdresse()->getLibelle(),
                              c1->getAdresse()->getComplement(),
                              c1->getAdresse()->getVille(),
                              c1->getAdresse()->getCodePostal(),
                              nomEntreprise,email);
-
+                if (ok) this->accept();
+                else  emit(erreur(SQL));
             }
             delete c1;
         }
@@ -154,7 +162,7 @@ void AjoutContact::on_btnAjouter_clicked()
 
 
     }
-    //this->accept();
+    //
 }
 
 

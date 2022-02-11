@@ -7,7 +7,7 @@
 #include <QDebug>
 
 
-enum errors {VALIDE,MAIL,LIBELLE,VILLE,PRENOM,NOM,DATE,ENTR};
+enum errors {VALIDE,MAIL,LIBELLE,VILLE,PRENOM,NOM,DATE,ENTR,SQL,POST};
 
 class Adresse
 {

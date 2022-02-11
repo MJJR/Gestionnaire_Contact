@@ -17,6 +17,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void load_Table();
+
 private slots:
     void on_radioPro_pressed();
 

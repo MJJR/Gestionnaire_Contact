@@ -10,10 +10,6 @@
 #include "adresse.h"
 #include "professionnels.h"
 
-#include "professionnels.h"
-#include "prives.h"
-#include "adresse.h"
-
 namespace Ui {
 class AjoutContact;
 }

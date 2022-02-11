@@ -13,31 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    load_Table();
 
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("dbContacts.db");
-
-    model = new QSqlTableModel();
-
-    model->setTable("contacts");
-    model->select();
-
-    model->setHeaderData(0,Qt::Horizontal, "Identifiant");
-    model->setHeaderData(1,Qt::Horizontal, "Nom");
-    model->setHeaderData(2,Qt::Horizontal, "Prenom");
-    model->setHeaderData(3,Qt::Horizontal, "Sexe");
-    model->setHeaderData(4,Qt::Horizontal, "Entreprise");
-    model->setHeaderData(5,Qt::Horizontal, "Libellé");
-    model->setHeaderData(6,Qt::Horizontal, "Complément");
-    model->setHeaderData(7,Qt::Horizontal, "Code Postal");
-    model->setHeaderData(8,Qt::Horizontal, "Ville");
-    model->setHeaderData(9,Qt::Horizontal, "Mail de Contact");
-    model->setHeaderData(10,Qt::Horizontal, "Date de Naissance");
-
-
-    ui->tableView->setModel(model);
-
-    row = model->rowCount();
 }
 
 MainWindow::~MainWindow()
@@ -171,6 +148,8 @@ void MainWindow::on_ajouterContact_triggered()
     AjoutContact ajoutContact;
 
     ajoutContact.exec();
+
+    load_Table();
 }
 
 
@@ -189,4 +168,33 @@ void MainWindow::on_choiceContact()
         {
             qDebug() << rb->text();
         }
+}
+
+void MainWindow::load_Table()
+{
+
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("dbContacts.db");
+
+    model = new QSqlTableModel();
+
+    model->setTable("contacts");
+    model->select();
+
+    model->setHeaderData(0,Qt::Horizontal, "Identifiant");
+    model->setHeaderData(1,Qt::Horizontal, "Nom");
+    model->setHeaderData(2,Qt::Horizontal, "Prenom");
+    model->setHeaderData(3,Qt::Horizontal, "Sexe");
+    model->setHeaderData(4,Qt::Horizontal, "Entreprise");
+    model->setHeaderData(5,Qt::Horizontal, "Libellé");
+    model->setHeaderData(6,Qt::Horizontal, "Complément");
+    model->setHeaderData(7,Qt::Horizontal, "Code Postal");
+    model->setHeaderData(8,Qt::Horizontal, "Ville");
+    model->setHeaderData(9,Qt::Horizontal, "Mail de Contact");
+    model->setHeaderData(10,Qt::Horizontal, "Date de Naissance");
+
+
+    ui->tableView->setModel(model);
+
+    row = model->rowCount();
 }
