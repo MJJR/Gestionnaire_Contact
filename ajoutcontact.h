@@ -44,7 +44,7 @@ private:
 private slots:
     void onFormulaireError(int);
 
-    void on_testBtn_clicked();
+    void on_btnAnnuler_clicked();
 
 signals:
     void erreur(int);

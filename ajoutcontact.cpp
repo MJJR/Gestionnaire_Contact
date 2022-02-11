@@ -75,32 +75,23 @@ void AjoutContact::onFormulaireError(int e)
     msgBox.exec();
 }
 
-void AjoutContact::on_testBtn_clicked()
-{
-    if(ui->rdoPrive->isChecked() == true)
-    {
-        Adresse a1("125, rue","Toulouse",36000); //TODO Recup donnés form && créer adresse
-
-    }
-    else
-    {
-
-    }
-
-}
-
-
-
 void AjoutContact::on_btnAjouter_clicked()
 {
+
     QString nom = ui->txtNom->text();
     QString prenom = ui->txtPrenom->text();
-    QString sexe = ui->cboSexe->currentText();
     QString libelle = ui->txtAdresse->text();
     QString complement = ui->txtComplement->text();
     int codePostal = ui->txtCodePostal->text().toInt();
     QString ville = ui->txtVille->text();
+    char sexe;
 
+    if(ui->cboSexe->currentIndex() == 1)
+    {
+        sexe = 'F';
+    }else {
+        sexe = 'M';
+    }
 
     if(ui->rdoPrive->isChecked() == true)
     {
@@ -108,7 +99,8 @@ void AjoutContact::on_btnAjouter_clicked()
         Adresse a1(libelle,complement,ville,codePostal);
         if (a1.getErrorA() == VALIDE)
         {
-            Contacts* c1 = new Prives(nom,prenom,'M',&a1,dateNaissance); //TODO Recup donnés form && créer Contact
+            Contacts* c1 = new Prives(nom,prenom,sexe,&a1,dateNaissance); //TODO Recup donnés form && créer Contact
+            c1->affiche();
             if (c1->getError() != VALIDE)
             {
                 emit(erreur(c1->getError()));
@@ -137,7 +129,7 @@ void AjoutContact::on_btnAjouter_clicked()
         Adresse a1(libelle,complement,ville,codePostal); //TODO Recup donnés form && créer adresse
         if (a1.getErrorA() == VALIDE)
         {
-            Contacts* c1 = new Professionnels(nom,prenom,'M',&a1,nomEntreprise, email); //TODO Recup donnés form && créer Contact
+            Contacts* c1 = new Professionnels(nom,prenom,sexe,&a1,nomEntreprise, email); //TODO Recup donnés form && créer Contact
             c1->affiche();
             if (c1->getError() != VALIDE)
             {
@@ -164,6 +156,7 @@ void AjoutContact::on_btnAjouter_clicked()
     }
     //this->accept();
 }
+
 
 bool AjoutContact::insertPro(QString nom , QString prenom ,
                            char sexe , QString libelle , QString complement ,
@@ -244,4 +237,17 @@ bool AjoutContact::insertPrive(QString nom, QString prenom,
     }
 
     return isValid;
+}
+
+
+void AjoutContact::on_btnAnnuler_clicked()
+{
+    ui->txtNom->clear();
+    ui->txtPrenom->clear();
+    ui->txtAdresse->clear();
+    ui->txtComplement->clear();
+    ui->txtCodePostal->clear();
+    ui->txtVille->clear();
+    ui->txtNomEntreprise->clear();
+    ui->txtEmail->clear();
 }
