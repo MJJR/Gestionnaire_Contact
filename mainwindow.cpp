@@ -172,3 +172,19 @@ void MainWindow::on_ajouterContact_triggered()
 
     ajoutContact.exec();
 }
+
+void MainWindow::on_choiceContact()
+{
+    qDebug() << "Police !!!";
+
+        //sender() : élément déclencheur
+
+        qDebug() << "sender() : élément déclencheur " <<  sender()->objectName();
+
+        QAbstractButton *rb = dynamic_cast<QAbstractButton*>(sender());
+
+        if(rb != nullptr)
+        {
+            qDebug() << rb->text();
+        }
+}

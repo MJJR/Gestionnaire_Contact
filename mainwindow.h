@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSqlTableModel>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,8 @@ private slots:
     void on_rechercheCancl_clicked();
 
     void on_ajouterContact_triggered();
+
+    void on_choiceContact();
 
 protected:
     void closeEvent(QCloseEvent *);
