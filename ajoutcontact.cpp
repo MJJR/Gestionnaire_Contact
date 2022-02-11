@@ -6,7 +6,7 @@
 
 AjoutContact::AjoutContact(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AjoutContact)
+    ui(new Ui::AjoutContact) //Affiche le formulaire de contact
 {
     ui->setupUi(this);
 
@@ -14,31 +14,33 @@ AjoutContact::AjoutContact(QWidget *parent) :
     {
         ui->grpPro->hide();
     }
-    connect(this,SIGNAL(erreur(int)),this,SLOT(onFormulaireError(int)));
+    connect(this,SIGNAL(erreur(int)),this,SLOT(onFormulaireError(int))); // Liaison du signal erreur qui prendre en valeur, l'erreur renvoyé par un setter des classes contacts,
+                                                                         // à l'évenement qui fait apparaitre le message d'erreur
 }
 
-AjoutContact::~AjoutContact()
+AjoutContact::~AjoutContact() //Destructor
 {
     delete ui;
 }
 
-void AjoutContact::on_rdoProfessionnel_clicked()
+void AjoutContact::on_rdoProfessionnel_clicked() //Cache les infos de privé
 {
     ui->grpPro->show();
     ui->lblDate->hide();
     ui->dateNaissance->hide();
 }
 
-void AjoutContact::on_rdoPrive_clicked()
+void AjoutContact::on_rdoPrive_clicked()//Cache les infos de professionnel
 {
     ui->grpPro->hide();
     ui->lblDate->show();
     ui->dateNaissance->show();
 }
 
-void AjoutContact::onFormulaireError(int e)
+void AjoutContact::onFormulaireError(int e) //Affiche un message d'erreur en fonction de la valeur de l'erreur
 {
     QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Erreur saisie");
     msgBox.setIcon(QMessageBox::Critical);
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
@@ -83,7 +85,7 @@ void AjoutContact::onFormulaireError(int e)
     msgBox.exec();
 }
 
-void AjoutContact::on_btnAjouter_clicked()
+void AjoutContact::on_btnAjouter_clicked() //Ajoute un contact à la base de donnée
 {
 
     QString nom = ui->txtNom->text();
@@ -94,14 +96,14 @@ void AjoutContact::on_btnAjouter_clicked()
     QString ville = ui->txtVille->text();
     char sexe;
 
-    if(ui->cboSexe->currentIndex() == 1)
+    if(ui->cboSexe->currentIndex() == 1)//Vérrification du sexe
     {
         sexe = 'F';
     }else {
         sexe = 'M';
     }
 
-    if(ui->rdoPrive->isChecked() == true)
+    if(ui->rdoPrive->isChecked() == true)//Vérrification du type de contact a ajouter
     {
         QString dateNaissance = ui->dateNaissance->date().toString("dd-MM-yyyy");
         Adresse a1(libelle,complement,ville,codePostal);
@@ -110,24 +112,27 @@ void AjoutContact::on_btnAjouter_clicked()
             Contacts* c1 = new Prives(nom,prenom,sexe,&a1,dateNaissance);
             if (c1->getError() != VALIDE)
             {
-                emit(erreur(c1->getError()));
+                emit(erreur(c1->getError())); //Envoie le signal d'erreur en cas d'erreur dans la création de notre Contact
             }
             else
             {
+                //Insertion du contact Prive dans la base de donnee
                 bool ok =insertPrive( c1->getNom(),c1->getPrenom(),
                              c1->getSexe(),c1->getAdresse()->getLibelle(),
                              c1->getAdresse()->getComplement(),
                              c1->getAdresse()->getVille(),
                              c1->getAdresse()->getCodePostal(),
                              dateNaissance);
+                //Si l'insertion dans la base s'est bien deroule alors on ferme la fenetre
+                //Sinon on emet une erreur et on reste sur la fenetre
                 if (ok) this->accept();
-                else  emit(erreur(SQL));
+                else  emit(erreur(SQL)); //Envoie le signal d'erreur en cas d'erreur dans la requete SQL
             }
             delete c1;
         }
         else
         {
-             emit(erreur(a1.getErrorA()));
+             emit(erreur(a1.getErrorA())); //Envoie le signal d'erreur en cas d'erreur dans la création de notre adresse
         }
 
     }else {
@@ -140,29 +145,31 @@ void AjoutContact::on_btnAjouter_clicked()
             Contacts* c1 = new Professionnels(nom,prenom,sexe,&a1,nomEntreprise, email);
             if (c1->getError() != VALIDE)
             {
-                emit(erreur(c1->getError()));
+                emit(erreur(c1->getError())); //Envoie le signal d'erreur en cas d'erreur dans la création de notre Contact
             }
             else
             {
-               bool ok = insertPro( c1->getNom(),c1->getPrenom(),
+                //Insertion du contact Professionnel dans la base de donnee
+                bool ok = insertPro( c1->getNom(),c1->getPrenom(),
                              c1->getSexe(),c1->getAdresse()->getLibelle(),
                              c1->getAdresse()->getComplement(),
                              c1->getAdresse()->getVille(),
                              c1->getAdresse()->getCodePostal(),
                              nomEntreprise,email);
+                //Si l'insertion dans la base s'est bien deroule alors on ferme la fenetre
+                //Sinon on emet une erreur et on reste sur la fenetre
                 if (ok) this->accept();
-                else  emit(erreur(SQL));
+                else  emit(erreur(SQL)); //Envoie le signal d'erreur en cas d'erreur dans la requete SQL
             }
             delete c1;
         }
         else
         {
-             emit(erreur(a1.getErrorA()));
+             emit(erreur(a1.getErrorA())); //Envoie le signal d'erreur en cas d'erreur dans la création de notre adresse
         }
 
 
     }
-    //
 }
 
 
@@ -171,22 +178,21 @@ bool AjoutContact::insertPro(QString nom , QString prenom ,
                            QString ville , int codePostal , QString nomEntreprise ,
                            QString email){
 
+    //Ajout de la base de donnee "QSQLITE" dans la classe QSqlDatabase
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("dbContacts.db");
 
-
+    //Ouverture de la base de donnee si ce n'est pas deja fait
     if (!db.isOpen())
     {
         db.open();
     }
 
+    //Ecriture de la requete sql pour inserer un contact
     QSqlQuery query(db);
-
     QString test(" INSERT INTO Contacts( Nom , Prenom , Sexe , rue , Complement , Ville , cp , Entreprise , mail )"
                  "VALUES( :nom , :prenom , :sexe , :libelle , :complement , :ville , :codePostal , :nomEntreprise , :email );");
-
     query.prepare(test);
-
     query.bindValue(":nom",nom);
     query.bindValue(":prenom",prenom);
     query.bindValue(":sexe",QString(sexe));
@@ -197,8 +203,10 @@ bool AjoutContact::insertPro(QString nom , QString prenom ,
     query.bindValue(":nomEntreprise",nomEntreprise);
     query.bindValue(":email",email);
 
+    //Execution de la requete et on retorunera si la requete s'est bien deroule
     bool isValid = query.exec();
 
+    //Fermeture de la base de donnee si la base de donnee est toujours ouverte
     if (db.isOpen())
     {
         db.close();
@@ -213,21 +221,21 @@ bool AjoutContact::insertPrive(QString nom, QString prenom,
                              QString ville, int codePostal,
                              QString dateNaissance){
 
+    //Ajout de la base de donnee "QSQLITE" dans la classe QSqlDatabase
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("dbContacts.db");
 
+    //Ouverture de la base de donnee si ce n'est pas deja fait
     if (!db.isOpen())
     {
         db.open();
     }
 
+    //Ecriture de la requete sql pour inserer un contact
     QSqlQuery query(db);
-
     QString test(" INSERT INTO Contacts( Nom , Prenom , Sexe , rue , Complement , Ville , cp , dtNaissance )"
                  "VALUES( :nom , :prenom , :sexe , :libelle , :complement , :ville , :codePostal , :dateNaissance );");
-
     query.prepare(test);
-
     query.bindValue(":nom",nom);
     query.bindValue(":prenom",prenom);
     query.bindValue(":sexe",QString(sexe));
@@ -237,8 +245,10 @@ bool AjoutContact::insertPrive(QString nom, QString prenom,
     query.bindValue(":codePostal",codePostal);
     query.bindValue(":dateNaissance",dateNaissance);
 
+    //Execution de la requete et on retorunera si la requete s'est bien deroule
     bool isValid = query.exec();
 
+    //Fermeture de la base de donnee si la base de donnee est toujours ouverte
     if (db.isOpen())
     {
         db.close();
@@ -248,7 +258,7 @@ bool AjoutContact::insertPrive(QString nom, QString prenom,
 }
 
 
-void AjoutContact::on_btnAnnuler_clicked()
+void AjoutContact::on_btnAnnuler_clicked() //Clear les lineEdits
 {
     ui->txtNom->clear();
     ui->txtPrenom->clear();

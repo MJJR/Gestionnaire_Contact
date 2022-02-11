@@ -1,5 +1,6 @@
 #include "adresse.h"
 
+//Création du cpp
 const QString &Adresse::getLibelle() const
 {
     return libelle;
@@ -7,7 +8,8 @@ const QString &Adresse::getLibelle() const
 
 void Adresse::setLibelle(const QString &newLibelle)
 {
-    //TODO Expr Reg
+    //Validation avec regex :
+    //chaîne de caractère qui commence avec au moins un chiffre
     QRegularExpression testLibelle("^[0-9]{1,}.*");
     if(testLibelle.match( newLibelle ).hasMatch()){
         libelle = newLibelle;
@@ -25,7 +27,6 @@ const QString &Adresse::getComplement() const
 void Adresse::setComplement(const QString &newComplement)
 {
     // A priori pas de test avec des expr reg ici
-
     complement = newComplement;
 }
 
@@ -37,7 +38,9 @@ const QString &Adresse::getVille() const
 void Adresse::setVille(const QString &newVille)
 {
 
-    QRegularExpression testVille("^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$");
+    //Validation avec un regex
+    //Il doit prendre en compte des noms de ville comme "Haute-Vienne"
+    QRegularExpression testVille("^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$");
     if(testVille.match( newVille ).hasMatch()){
         ville = newVille;
     }

@@ -5,7 +5,7 @@ QString Professionnels::getEmail() const
     return email;
 }
 
-void Professionnels::setEmail(const QString &value)
+void Professionnels::setEmail(const QString &value)//Gestion des erreurs sur l'email
 {
 
     //Expression régulière pour vérifier si le code postal français est valide
@@ -23,7 +23,7 @@ QString Professionnels::getNomEntreprise() const
     return nomEntreprise;
 }
 
-void Professionnels::setNomEntreprise(const QString &value)
+void Professionnels::setNomEntreprise(const QString &value)//Gestion des erreurs sur le nomEntreprise
 {
     if(value.size() > 50)
     {
@@ -41,7 +41,7 @@ Professionnels::Professionnels(QString nom, QString prenom, char sexe, Adresse* 
     this->setEmail(email);
 }
 
-void Professionnels::affiche()
+void Professionnels::affiche()//Affiche l'object dans la console
 {
 
     qDebug() << "Contact professionnel :" << getNom() << " " << getPrenom() << "\nAdresse : " << adresse->getAdress() <<"\nSexe: " << getSexe()

@@ -23,7 +23,7 @@ MainWindow::~MainWindow()
     delete model;
 }
 
-void MainWindow::on_radioPro_pressed()
+void MainWindow::on_radioPro_pressed() // Affiche les contacts Pro dans le tableView et cache les contact Prives
 {
     for (int i=0; i<row; i++)
     {
@@ -47,7 +47,7 @@ void MainWindow::on_radioPro_pressed()
 }
 
 
-void MainWindow::on_RadioPriv_pressed()
+void MainWindow::on_RadioPriv_pressed() // Affiche les contacts Prives dans le tableView et cache les contact Pro
 {
     for (int i=0; i<row; i++)
     {
@@ -72,7 +72,7 @@ void MainWindow::on_RadioPriv_pressed()
 
 
 
-void MainWindow::on_radioAll_pressed()
+void MainWindow::on_radioAll_pressed() //Affiche toute les infos de la BDD dans le tableView
 {
     for (int i=0; i<row; i++)
     {
@@ -89,9 +89,10 @@ void MainWindow::on_actionFermer_triggered()
     this->close();
 }
 
-void MainWindow::closeEvent(QCloseEvent * eventClose)
+void MainWindow::closeEvent(QCloseEvent * eventClose)//Gère la fermeture de la fenêtre
 {
     QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Quitter");
     msgBox.setText("Voulez vous Quitter ?");
     msgBox.setInformativeText("Quitter ?");
     msgBox.setIcon(QMessageBox::Question);
@@ -110,7 +111,8 @@ void MainWindow::closeEvent(QCloseEvent * eventClose)
             break;
     }
 }
-void MainWindow::on_rechercheBtn_clicked()
+
+void MainWindow::on_rechercheBtn_clicked() //Parcours le tableView et cherche un nom correspondant au textEdit, affiche sa ligne uniquement
 {
     for (int i=0; i<row; i++)
     {
@@ -131,7 +133,7 @@ void MainWindow::on_rechercheBtn_clicked()
 }
 
 
-void MainWindow::on_rechercheCancl_clicked()
+void MainWindow::on_rechercheCancl_clicked() //Remet les les lignes cachés par la recherche en visible
 {
     for (int i=0; i<row; i++)
     {
@@ -143,7 +145,7 @@ void MainWindow::on_rechercheCancl_clicked()
 }
 
 
-void MainWindow::on_ajouterContact_triggered()
+void MainWindow::on_ajouterContact_triggered()//Ouvre le formulaire de création de contact
 {
     AjoutContact ajoutContact;
 
@@ -152,25 +154,7 @@ void MainWindow::on_ajouterContact_triggered()
     load_Table();
 }
 
-
-
-void MainWindow::on_choiceContact()
-{
-    qDebug() << "Police !!!";
-
-        //sender() : élément déclencheur
-
-        qDebug() << "sender() : élément déclencheur " <<  sender()->objectName();
-
-        QAbstractButton *rb = dynamic_cast<QAbstractButton*>(sender());
-
-        if(rb != nullptr)
-        {
-            qDebug() << rb->text();
-        }
-}
-
-void MainWindow::load_Table()
+void MainWindow::load_Table() //Effectue une requete select dans la BDD et affiche son résultat dans le tableView
 {
 
     db = QSqlDatabase::addDatabase("QSQLITE");

@@ -5,7 +5,6 @@
 #include <QDebug>
 #include "adresse.h"
 
-
 class Contacts
 {
 private:

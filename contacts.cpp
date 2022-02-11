@@ -63,8 +63,9 @@ QString Contacts::getPrenom() const
 void Contacts::setPrenom(const QString &value)
 {
     //TODO REGEX
-    QRegularExpression testPr("^[A-Z]{1}[a-z]*");
+    QRegularExpression testPr("[A-Z]+|[a-z]+");
     if(testPr.match(value).hasMatch()){
+        value[0].toUpper();
         prenom = value;
     }
     else{
