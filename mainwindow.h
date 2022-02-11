@@ -33,8 +33,6 @@ private slots:
 
     void on_ajouterContact_triggered();
 
-    void on_choiceContact();
-
 protected:
     void closeEvent(QCloseEvent *);
 
