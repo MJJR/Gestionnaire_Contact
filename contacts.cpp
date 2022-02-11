@@ -81,9 +81,9 @@ QString Contacts::getNom() const
 void Contacts::setNom(const QString &value)
 {
     //TODO REGEX
-    QRegularExpression testNm("^[A-Z]{1}[a-z]*");
+    QRegularExpression testNm("[A-Z]+|[a-z]+");
     if(testNm.match(value).hasMatch()){
-        nom = value;
+        nom = value.toUpper();
     }
     else{
      error=NOM;
