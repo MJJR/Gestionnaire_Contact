@@ -39,6 +39,7 @@ void AjoutContact::on_rdoPrive_clicked()
 void AjoutContact::onFormulaireError(int e)
 {
     QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Erreur saisie");
     msgBox.setIcon(QMessageBox::Critical);
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);

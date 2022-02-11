@@ -92,6 +92,7 @@ void MainWindow::on_actionFermer_triggered()
 void MainWindow::closeEvent(QCloseEvent * eventClose)
 {
     QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Quitter");
     msgBox.setText("Voulez vous Quitter ?");
     msgBox.setInformativeText("Quitter ?");
     msgBox.setIcon(QMessageBox::Question);
