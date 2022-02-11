@@ -37,7 +37,7 @@ const QString &Adresse::getVille() const
 void Adresse::setVille(const QString &newVille)
 {
 
-    QRegularExpression testVille("^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$");
+    QRegularExpression testVille("^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$");
     if(testVille.match( newVille ).hasMatch()){
         ville = newVille;
     }
