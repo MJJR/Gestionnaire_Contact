@@ -11,12 +11,12 @@
         case 'X': return "Autre";
         default : return "Non renseigné";
     }
-}*/
+}
 
 void Prives::setSituation(char newSituation)
 {
     situation = newSituation;
-}
+}*/
 
 const QString &Prives::getDateNaissance() const
 {
@@ -35,10 +35,10 @@ void Prives::setDateNaissance(const QString &newDateNaissance)
 
 }
 
-Prives::Prives(QString n, QString p, char s, Adresse* a, char sit, QString d)
+Prives::Prives(QString n, QString p, char s, Adresse* a,/* char sit,*/ QString d)
     :Contacts(n,p,s,a)
 {
-    this->setSituation(sit);
+   /* this->setSituation(sit);*/
     this->setDateNaissance(d);
 }
 

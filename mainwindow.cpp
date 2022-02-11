@@ -48,6 +48,8 @@ void MainWindow::on_radioPro_pressed()
     {
         ui->tableView->showRow(i);
     }
+    ui->tableView->showColumn(9);
+    ui->tableView->showColumn(4);
     auto index = model->index(0,4);
     for (int i=0; i<row; i++)
     {
@@ -55,6 +57,10 @@ void MainWindow::on_radioPro_pressed()
         if (index.data() == "")
         {
             ui->tableView->hideRow(i);
+        }
+        else
+        {
+            ui->tableView->hideColumn(10);
         }
     }
 }
@@ -66,6 +72,7 @@ void MainWindow::on_RadioPriv_pressed()
     {
         ui->tableView->showRow(i);
     }
+    ui->tableView->showColumn(10);
     auto index = model->index(0,10);
     for (int i=0; i<row; i++)
     {
@@ -73,6 +80,11 @@ void MainWindow::on_RadioPriv_pressed()
         if (index.data() == "")
         {
             ui->tableView->hideRow(i);
+        }
+        else
+        {
+            ui->tableView->hideColumn(9);
+            ui->tableView->hideColumn(4);
         }
     }
 }
@@ -85,6 +97,9 @@ void MainWindow::on_radioAll_pressed()
     {
         ui->tableView->showRow(i);
     }
+    ui->tableView->showColumn(10);
+    ui->tableView->showColumn(9);
+    ui->tableView->showColumn(4);
 }
 
 
