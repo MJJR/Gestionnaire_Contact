@@ -11,9 +11,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
 
-    Adresse a1("125, rue","Toulouse",36000);
-    Contacts* p1= new Prives("Jean","Phillipe",'F',&a1,'C',"13/09/1955");
-    Contacts* p2= new Professionnels("Jean","Phillipe",'F',&a1,"Abylsen","abylsen@jean.com");
+    Adresse a1("lol","gneugneu",1);
+    Contacts* p1= new Prives("prout","r2d2",'X',&a1,'1',"1a3/09/1955");
+    Contacts* p2= new Professionnels("BWAAAAH","lol",'T',&a1,"Abylsen","abylsen@jean.com");
 
     w.show();
 

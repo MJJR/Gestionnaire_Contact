@@ -15,7 +15,15 @@
 
 void Prives::setSituation(char newSituation)
 {
-    situation = newSituation;
+
+    QRegularExpression testSit("[A-Z]{1}");
+    if(testSit.match( QString(newSituation) ).hasMatch()){
+        situation = newSituation;
+    }
+    else{
+     qDebug() << "Invalide situation" ;
+    }
+
 }
 
 const QString &Prives::getDateNaissance() const

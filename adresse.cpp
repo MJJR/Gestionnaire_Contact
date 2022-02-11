@@ -7,7 +7,14 @@ const QString &Adresse::getLibelle() const
 
 void Adresse::setLibelle(const QString &newLibelle)
 {
-    libelle = newLibelle;
+    //TODO Expr Reg
+    QRegularExpression testLibelle("^[0-9]{1,}.*");
+    if(testLibelle.match( newLibelle ).hasMatch()){
+        libelle = newLibelle;
+    }
+    else{
+     qDebug() << "Invalide Libelle" ;
+    }
 }
 
 const QString &Adresse::getComplement() const
@@ -17,6 +24,8 @@ const QString &Adresse::getComplement() const
 
 void Adresse::setComplement(const QString &newComplement)
 {
+    // A priori pas de test avec des expr reg ici
+
     complement = newComplement;
 }
 
@@ -27,7 +36,15 @@ const QString &Adresse::getVille() const
 
 void Adresse::setVille(const QString &newVille)
 {
-    ville = newVille;
+
+    QRegularExpression testVille("^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$");
+    if(testVille.match( newVille ).hasMatch()){
+        ville = newVille;
+    }
+    else{
+     qDebug() << "Invalide Ville" ;
+    }
+
 }
 
 int Adresse::getCodePostal() const
