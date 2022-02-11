@@ -89,7 +89,7 @@ void MainWindow::on_actionFermer_triggered()
     this->close();
 }
 
-void MainWindow::closeEvent(QCloseEvent * eventClose)
+void MainWindow::closeEvent(QCloseEvent * eventClose)//Gère la fermeture de la fenêtre
 {
     QMessageBox msgBox(this);
     msgBox.setWindowTitle("Quitter");
@@ -145,7 +145,7 @@ void MainWindow::on_rechercheCancl_clicked() //Remet les les lignes cachés par 
 }
 
 
-void MainWindow::on_ajouterContact_triggered()
+void MainWindow::on_ajouterContact_triggered()//Ouvre le formulaire de création de contact
 {
     AjoutContact ajoutContact;
 

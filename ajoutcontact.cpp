@@ -6,7 +6,7 @@
 
 AjoutContact::AjoutContact(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AjoutContact)
+    ui(new Ui::AjoutContact) //Affiche le formulaire de contact
 {
     ui->setupUi(this);
 
@@ -18,19 +18,19 @@ AjoutContact::AjoutContact(QWidget *parent) :
                                                                          // à l'évenement qui fait apparaitre le message d'erreur
 }
 
-AjoutContact::~AjoutContact()
+AjoutContact::~AjoutContact() //Destructor
 {
     delete ui;
 }
 
-void AjoutContact::on_rdoProfessionnel_clicked()
+void AjoutContact::on_rdoProfessionnel_clicked() //Cache les infos de privé
 {
     ui->grpPro->show();
     ui->lblDate->hide();
     ui->dateNaissance->hide();
 }
 
-void AjoutContact::on_rdoPrive_clicked()
+void AjoutContact::on_rdoPrive_clicked()//Cache les infos de professionnel
 {
     ui->grpPro->hide();
     ui->lblDate->show();
@@ -85,7 +85,7 @@ void AjoutContact::onFormulaireError(int e) //Affiche un message d'erreur en fon
     msgBox.exec();
 }
 
-void AjoutContact::on_btnAjouter_clicked()
+void AjoutContact::on_btnAjouter_clicked() //Ajoute un contact à la base de donnée
 {
 
     QString nom = ui->txtNom->text();
@@ -96,14 +96,14 @@ void AjoutContact::on_btnAjouter_clicked()
     QString ville = ui->txtVille->text();
     char sexe;
 
-    if(ui->cboSexe->currentIndex() == 1)
+    if(ui->cboSexe->currentIndex() == 1)//Vérrification du sexe
     {
         sexe = 'F';
     }else {
         sexe = 'M';
     }
 
-    if(ui->rdoPrive->isChecked() == true)
+    if(ui->rdoPrive->isChecked() == true)//Vérrification du type de contact a ajouter
     {
         QString dateNaissance = ui->dateNaissance->date().toString("dd-MM-yyyy");
         Adresse a1(libelle,complement,ville,codePostal);
@@ -250,7 +250,7 @@ bool AjoutContact::insertPrive(QString nom, QString prenom,
 }
 
 
-void AjoutContact::on_btnAnnuler_clicked()
+void AjoutContact::on_btnAnnuler_clicked() //Clear les lineEdits
 {
     ui->txtNom->clear();
     ui->txtPrenom->clear();
