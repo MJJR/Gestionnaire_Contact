@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include <QDebug>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+
 #include "prives.h"
 #include "adresse.h"
 #include "professionnels.h"
@@ -22,6 +25,10 @@ class AjoutContact : public QDialog
 public:
     explicit AjoutContact(QWidget *parent = nullptr);
     ~AjoutContact();
+
+    bool insertPro(QString nom, QString prenom, char sexe, QString libelle, QString complement, QString ville, int codePostal, QString nomEntreprise, QString email);
+    bool insertPrive(QString nom, QString prenom, char sexe, QString libelle, QString complement, QString ville, int codePostal, QString dateNaissance);
+
 
 private slots:
 

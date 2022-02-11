@@ -115,7 +115,13 @@ void AjoutContact::on_btnAjouter_clicked()
             }
             else
             {
-                //TODO SQL
+                insertPrive( c1->getNom(),c1->getPrenom(),
+                             c1->getSexe(),c1->getAdresse()->getLibelle(),
+                             c1->getAdresse()->getComplement(),
+                             c1->getAdresse()->getVille(),
+                             c1->getAdresse()->getCodePostal(),
+                             dateNaissance);
+
             }
             delete c1;
         }
@@ -139,7 +145,13 @@ void AjoutContact::on_btnAjouter_clicked()
             }
             else
             {
-                //TODO SQL
+                insertPro( c1->getNom(),c1->getPrenom(),
+                             c1->getSexe(),c1->getAdresse()->getLibelle(),
+                             c1->getAdresse()->getComplement(),
+                             c1->getAdresse()->getVille(),
+                             c1->getAdresse()->getCodePostal(),
+                             nomEntreprise,email);
+
             }
             delete c1;
         }
@@ -151,4 +163,85 @@ void AjoutContact::on_btnAjouter_clicked()
 
     }
     //this->accept();
+}
+
+bool AjoutContact::insertPro(QString nom , QString prenom ,
+                           char sexe , QString libelle , QString complement ,
+                           QString ville , int codePostal , QString nomEntreprise ,
+                           QString email){
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("dbContacts.db");
+
+
+    if (!db.isOpen())
+    {
+        db.open();
+    }
+
+    QSqlQuery query(db);
+
+    QString test(" INSERT INTO Contacts( Nom , Prenom , Sexe , rue , Complement , Ville , cp , Entreprise , mail )"
+                 "VALUES( :nom , :prenom , :sexe , :libelle , :complement , :ville , :codePostal , :nomEntreprise , :email );");
+
+    query.prepare(test);
+
+    query.bindValue(":nom",nom);
+    query.bindValue(":prenom",prenom);
+    query.bindValue(":sexe",QString(sexe));
+    query.bindValue(":libelle",libelle);
+    query.bindValue(":complement",complement);
+    query.bindValue(":ville",ville);
+    query.bindValue(":codePostal",codePostal);
+    query.bindValue(":nomEntreprise",nomEntreprise);
+    query.bindValue(":email",email);
+
+    bool isValid = query.exec();
+
+    if (db.isOpen())
+    {
+        db.close();
+    }
+
+    return isValid;
+
+}
+
+bool AjoutContact::insertPrive(QString nom, QString prenom,
+                             char sexe, QString libelle, QString complement,
+                             QString ville, int codePostal,
+                             QString dateNaissance){
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("dbContacts.db");
+
+    if (!db.isOpen())
+    {
+        db.open();
+    }
+
+    QSqlQuery query(db);
+
+    QString test(" INSERT INTO Contacts( Nom , Prenom , Sexe , rue , Complement , Ville , cp , dtNaissance )"
+                 "VALUES( :nom , :prenom , :sexe , :libelle , :complement , :ville , :codePostal , :dateNaissance );");
+
+    query.prepare(test);
+
+    query.bindValue(":nom",nom);
+    query.bindValue(":prenom",prenom);
+    query.bindValue(":sexe",QString(sexe));
+    query.bindValue(":libelle",libelle);
+    query.bindValue(":complement",complement);
+    query.bindValue(":ville",ville);
+    query.bindValue(":codePostal",codePostal);
+    query.bindValue(":dateNaissance",dateNaissance);
+
+    bool isValid = query.exec();
+
+    if (db.isOpen())
+    {
+        db.close();
+    }
+
+    return isValid;
 }
