@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QSqlTableModel>
+#include <QSqlQuery>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -15,6 +17,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool insertPro(int id, QString nom, QString prenom, char sexe, QString libelle, QString complement, QString ville, int codePostal, QString nomEntreprise, QString email);
+    bool insertPrive(int id, QString nom, QString prenom, char sexe, QString libelle, QString complement, QString ville, int codePostal, QString dateNaissance);
+
 
 private slots:
     void on_radioPro_pressed();
@@ -30,12 +35,17 @@ private slots:
 
     void on_ajouterContact_triggered();
 
+    //TEST DES REQUETES
+    //void on_pushButton_clicked();
+    //void on_pushButton_2_clicked();
+
 protected:
     void closeEvent(QCloseEvent *);
 
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *model;
+    QSqlDatabase db;
     int row;
 };
 

@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("dbContacts.db");
 
     model = new QSqlTableModel();
@@ -172,3 +172,101 @@ void MainWindow::on_ajouterContact_triggered()
 
     ajoutContact.exec();
 }
+
+/*
+ * //TEST DES REQUETES
+void MainWindow::on_pushButton_clicked()
+{
+
+    if(insertPro(43,"LOL","Juju", 'F',"-1, rue negatif","c'est negatif, quoi", "kekpar", 1001, "CSerieuOuais", "darkJujudu35@gogol.fr"))
+        qDebug()<<"Insertion Pro est passe";
+    else
+        qDebug()<<"Insertion Pro invalide";
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    if(insertPrive(44,"OUI","Jaja", 'M',"-2, rue negatif","c'est negatif, comme mon QI", "kekpar", 1001, "02/02/2002"))
+        qDebug()<<"Insertion Prive est passe";
+    else
+        qDebug()<<"Insertion Prive invalide";
+}
+*/
+
+bool MainWindow::insertPro(int id , QString nom , QString prenom ,
+                           char sexe , QString libelle , QString complement ,
+                           QString ville , int codePostal , QString nomEntreprise ,
+                           QString email){
+
+    if (!db.isOpen())
+    {
+        db.open();
+    }
+
+    QSqlQuery query(db);
+
+    QString test(" INSERT INTO Contacts( IDContact , Nom , Prenom , Sexe , rue , Complement , Ville , cp , Entreprise , mail )"
+                 "VALUES( :id , :nom , :prenom , :sexe , :libelle , :complement , :ville , :codePostal , :nomEntreprise , :email );");
+
+    query.prepare(test);
+
+    query.bindValue(":id",id);
+    query.bindValue(":nom",nom);
+    query.bindValue(":prenom",prenom);
+    query.bindValue(":sexe",QString(sexe));
+    query.bindValue(":libelle",libelle);
+    query.bindValue(":complement",complement);
+    query.bindValue(":ville",ville);
+    query.bindValue(":codePostal",codePostal);
+    query.bindValue(":nomEntreprise",nomEntreprise);
+    query.bindValue(":email",email);
+
+    bool isValid = query.exec();
+
+    if (db.isOpen())
+    {
+        db.close();
+    }
+
+    return isValid;
+
+}
+
+bool MainWindow::insertPrive(int id, QString nom, QString prenom,
+                             char sexe, QString libelle, QString complement,
+                             QString ville, int codePostal,
+                             QString dateNaissance){
+    if (!db.isOpen())
+    {
+        db.open();
+    }
+
+    QSqlQuery query(db);
+
+    QString test(" INSERT INTO Contacts( IDContact , Nom , Prenom , Sexe , rue , Complement , Ville , cp , dtNaissance )"
+                 "VALUES( :id , :nom , :prenom , :sexe , :libelle , :complement , :ville , :codePostal , :dateNaissance );");
+
+    query.prepare(test);
+
+    query.bindValue(":id",id);
+    query.bindValue(":nom",nom);
+    query.bindValue(":prenom",prenom);
+    query.bindValue(":sexe",QString(sexe));
+    query.bindValue(":libelle",libelle);
+    query.bindValue(":complement",complement);
+    query.bindValue(":ville",ville);
+    query.bindValue(":codePostal",codePostal);
+    query.bindValue(":dateNaissance",dateNaissance);
+
+    bool isValid = query.exec();
+
+    if (db.isOpen())
+    {
+        db.close();
+    }
+
+    return isValid;
+}
+
+
