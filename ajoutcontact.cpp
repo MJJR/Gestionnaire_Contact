@@ -14,7 +14,8 @@ AjoutContact::AjoutContact(QWidget *parent) :
     {
         ui->grpPro->hide();
     }
-    connect(this,SIGNAL(erreur(int)),this,SLOT(onFormulaireError(int)));
+    connect(this,SIGNAL(erreur(int)),this,SLOT(onFormulaireError(int))); // Liaison du signal erreur qui prendre en valeur, l'erreur renvoyé par un setter des classes contacts,
+                                                                         // à l'évenement qui fait apparaitre le message d'erreur
 }
 
 AjoutContact::~AjoutContact()
@@ -36,7 +37,7 @@ void AjoutContact::on_rdoPrive_clicked()
     ui->dateNaissance->show();
 }
 
-void AjoutContact::onFormulaireError(int e)
+void AjoutContact::onFormulaireError(int e) //Affiche un message d'erreur en fonction de la valeur de l'erreur
 {
     QMessageBox msgBox(this);
     msgBox.setWindowTitle("Erreur saisie");
@@ -111,7 +112,7 @@ void AjoutContact::on_btnAjouter_clicked()
             Contacts* c1 = new Prives(nom,prenom,sexe,&a1,dateNaissance);
             if (c1->getError() != VALIDE)
             {
-                emit(erreur(c1->getError()));
+                emit(erreur(c1->getError())); //Envoie le signal d'erreur en cas d'erreur dans la création de notre Contact
             }
             else
             {
@@ -122,13 +123,13 @@ void AjoutContact::on_btnAjouter_clicked()
                              c1->getAdresse()->getCodePostal(),
                              dateNaissance);
                 if (ok) this->accept();
-                else  emit(erreur(SQL));
+                else  emit(erreur(SQL)); //Envoie le signal d'erreur en cas d'erreur dans la requete SQL
             }
             delete c1;
         }
         else
         {
-             emit(erreur(a1.getErrorA()));
+             emit(erreur(a1.getErrorA())); //Envoie le signal d'erreur en cas d'erreur dans la création de notre adresse
         }
 
     }else {
@@ -141,7 +142,7 @@ void AjoutContact::on_btnAjouter_clicked()
             Contacts* c1 = new Professionnels(nom,prenom,sexe,&a1,nomEntreprise, email);
             if (c1->getError() != VALIDE)
             {
-                emit(erreur(c1->getError()));
+                emit(erreur(c1->getError())); //Envoie le signal d'erreur en cas d'erreur dans la création de notre Contact
             }
             else
             {
@@ -152,13 +153,13 @@ void AjoutContact::on_btnAjouter_clicked()
                              c1->getAdresse()->getCodePostal(),
                              nomEntreprise,email);
                 if (ok) this->accept();
-                else  emit(erreur(SQL));
+                else  emit(erreur(SQL)); //Envoie le signal d'erreur en cas d'erreur dans la requete SQL
             }
             delete c1;
         }
         else
         {
-             emit(erreur(a1.getErrorA()));
+             emit(erreur(a1.getErrorA())); //Envoie le signal d'erreur en cas d'erreur dans la création de notre adresse
         }
 
 
